@@ -3,7 +3,7 @@
 ## 1. نطاق التقرير
 
 - تاريخ التشغيل: 2026-09-01
-- commit SHA: (املئيه من آخر commit في مستودعك)
+- commit SHA: `ba58eff`
 - runtime/device: Google Colab، CPU
 - data version/hash: `bayan_day3_cases.csv` sha256 = `7708cbe884a3c268d24ed2cb87ad2f0a8b64b2e6fa6b37a32393b6ae3bd50e5b`؛ باقي البيانات من `data/sample/` في مستودع الدورة
 - preprocessing profile/version/backend: `search` / 1.0.0 / camel-tools==1.6.0
