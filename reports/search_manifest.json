@@ -1,0 +1,19 @@
+{
+  "manifest_version": "1.0.0",
+  "model_id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "embedding_dimension": 384,
+  "normalization": "l2",
+  "preprocessing_profile": "arabic-search/1.0.0 + english-nfc-whitespace/1.0.0",
+  "dataset_id": "bayan_day3_cases.csv",
+  "dataset_sha256": "7708cbe884a3c268d24ed2cb87ad2f0a8b64b2e6fa6b37a32393b6ae3bd50e5b",
+  "vector_count": 24,
+  "index_type": "IndexFlatIP",
+  "data_kind": "MEASURED_SMOKE",
+  "libraries": {
+    "camel-tools": "1.6.0",
+    "sentence-transformers": "6.0.0",
+    "faiss-cpu": "1.15.0",
+    "transformers": "5.15.1",
+    "tokenizers": "0.22.2"
+  }
+}

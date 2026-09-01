@@ -1,0 +1,65 @@
+{
+  "data_kind": "MEASURED_SMOKE",
+  "k": 3,
+  "threshold_tuned_on": "validation",
+  "frozen_no_answer_threshold": 0.4592095613479614,
+  "validation_no_answer_accuracy": 1.0,
+  "test_no_answer_accuracy": 1.0,
+  "test_retrieval": {
+    "recall@3": 1.0,
+    "mrr@3": 0.6666666666666666,
+    "answerable_queries": 6
+  },
+  "test_slices": [
+    {
+      "slice": "language=ar",
+      "n": 3,
+      "flag": "SMALL_SLICE",
+      "recall@3": 1.0,
+      "mrr@3": 0.5,
+      "answerable_queries": 3
+    },
+    {
+      "slice": "language=en",
+      "n": 3,
+      "flag": "SMALL_SLICE",
+      "recall@3": 1.0,
+      "mrr@3": 0.8333333333333334,
+      "answerable_queries": 3
+    },
+    {
+      "slice": "retrieval_mode=cross_lingual",
+      "n": 2,
+      "flag": "SMALL_SLICE",
+      "recall@3": 1.0,
+      "mrr@3": 0.5,
+      "answerable_queries": 2
+    },
+    {
+      "slice": "retrieval_mode=monolingual",
+      "n": 4,
+      "flag": "SMALL_SLICE",
+      "recall@3": 1.0,
+      "mrr@3": 0.75,
+      "answerable_queries": 4
+    }
+  ],
+  "reranking": {
+    "result_type": "MEASURED_SMOKE",
+    "reranker_id": "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1",
+    "candidate_count": 6,
+    "answerable_test_queries": 6,
+    "mrr_at_3_before": 0.6666666666666666,
+    "mrr_at_3_after": 0.7222222222222223,
+    "mrr_at_3_delta": 0.05555555555555569,
+    "median_rerank_ms": 331.20130200001086,
+    "p95_rerank_ms": 487.9343657499646,
+    "warmup_excluded": true,
+    "decision": "ADOPT_FOR_EXPERIMENT",
+    "limitations": [
+      "six answerable test queries",
+      "CPU timing depends on runtime",
+      "MEASURED_SMOKE only"
+    ]
+  }
+}
