@@ -1,84 +1,109 @@
-# تقرير تقييم بيان | Bayan Evaluation Report
-
-> انسخ هذا الملف إلى جذر مستودعك باسم `EVALUATION_REPORT.md`، ثم احذف التعليمات بين الأقواس واستبدل كل `TODO` بدليلك الفعلي.
+# EVALUATION REPORT — Bayan
 
 ## 1. نطاق التقرير
 
-- تاريخ التشغيل: `TODO`
-- commit SHA: `TODO`
-- runtime/device: `TODO`
-- data version/hash: `TODO`
-- preprocessing profile/version/backend: `TODO`
-- model/checkpoint IDs: `TODO`
-- نوع الأرقام: `MEASURED_SMOKE / MEASURED / COURSE_FIXTURE` — اختر بدقة.
+- تاريخ التشغيل: 2026-09-01
+- commit SHA: (املئيه من آخر commit في مستودعك)
+- runtime/device: Google Colab، CPU
+- data version/hash: `bayan_day3_cases.csv` sha256 = `7708cbe884a3c268d24ed2cb87ad2f0a8b64b2e6fa6b37a32393b6ae3bd50e5b`؛ باقي البيانات من `data/sample/` في مستودع الدورة
+- preprocessing profile/version/backend: `search` / 1.0.0 / camel-tools==1.6.0
+- model/checkpoint IDs:
+  - التصنيف وNER وQA: `distilbert/distilbert-base-multilingual-cased`
+  - المقارنة اللهجية: `CAMeL-Lab/bert-base-arabic-camelbert-da`
+  - البحث: `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2`
+  - إعادة الترتيب: `cross-encoder/mmarco-mMiniLMv2-L12-H384-v1`
+- نوع الأرقام: **MEASURED_SMOKE** لنتائج الأيام 1–3، و**COURSE_FIXTURE** لنتائج تقييم اليوم الثالث المبنية على `bayan_day3_predictions.csv`
 
 ## 2. العقود قبل القياس
 
 | العقد | الدليل | الحالة |
 |---|---|---|
-| لا PII حقيقية | `TODO` | PASS/PENDING |
-| train/validation/test بلا leakage | `TODO` | PASS/PENDING |
-| tokenizer/model متطابقان | `TODO` | PASS/PENDING |
-| Arabic profile متطابقة في train/index/query/serve | `TODO` | PASS/PENDING |
-| corpus/query embeddings مطبعة L2 | `TODO` | PASS/PENDING |
-| frozen test لم يستخدم في tuning | `TODO` | PASS/PENDING |
+| لا PII حقيقية | بيانات الدورة اصطناعية؛ إخفاء email/phone في `prepare_text` ودالة `mask_pii` | PASS |
+| train/validation/test بلا leakage | `validate_splits` تتحقق أن كل `group_id` في split واحد — النتيجة group_overlap = 0 على 20 مجموعة | PASS |
+| tokenizer/model متطابقان | المرمّز والأوزان من نفس الـcheckpoint في كل المهام | PASS |
+| Arabic profile متطابقة في train/index/query | نفس دالة `normalise_for_search` على corpus وquery؛ الـmanifest يوثّق profile وversion | PASS |
+| corpus/query embeddings مطبعة L2 | `np.allclose(norms, 1.0)` على الجهتين — norm_min=0.99999994، norm_max=1.0000001 | PASS |
+| frozen test لم يستخدم في tuning | عتبة no-answer ضُبطت على validation ثم جُمّدت؛ تحليل الأخطاء على validation فقط | PASS |
 
 ## 3. نتائج المهام
 
 | المهمة | المقياس الرئيس | النتيجة | CI/تكرار | مجموعة القياس |
 |---|---|---:|---|---|
-| Classification | Macro-F1 | `TODO` | `TODO` | `TODO` |
-| NER | strict entity F1 | `TODO` | `TODO` | `TODO` |
-| QA | EM/F1 + no-answer | `TODO` | `TODO` | `TODO` |
-| Retrieval | Recall@k / MRR@k | `TODO` | `TODO` | `TODO` |
+| Classification | Macro-F1 | 0.867 | بذرة واحدة، بلا CI | test، n=8، MEASURED_SMOKE |
+| NER | strict entity F1 | 0.571 | بذرة واحدة، بلا CI | test، 4 كيانات، MEASURED_SMOKE |
+| QA | no-answer + valid span | اختباران حتميان ناجحان | — | حالات ثابتة، MEASURED_SMOKE |
+| Retrieval | Recall@3 / MRR@3 | 1.000 / 0.667 | بذرة واحدة | test، 6 استعلامات، MEASURED_SMOKE |
+
+**تفصيل التصنيف:** TF-IDF baseline = 0.733 على test، Transformer = 0.867، والفرق على validation +0.333.
+**تفصيل NER:** precision = 0.667، recall = 0.500، 4 كيانات حقيقية و3 متنبأ بها.
+**تفصيل QA:** loss = 3.645 بعد 3 خطوات فقط؛ الاختباران يخصان صحة post-processing لا جودة النموذج.
+**تفصيل البحث بعد re-ranking:** MRR@3 = 0.722 (+0.056).
 
 ## 4. شرائح التقييم
 
 | المهمة | الشريحة | n | metric | 95% CI | التحذير/التفسير |
 |---|---|---:|---:|---|---|
-| `TODO` | `language=ar` | `TODO` | `TODO` | `TODO` | `TODO` |
-| `TODO` | `language=en` | `TODO` | `TODO` | `TODO` | `TODO` |
-| `TODO` | `variant=Gulf` | `TODO` | `TODO` | `TODO` | `TODO` |
-| `TODO` | `length=long` | `TODO` | `TODO` | `TODO` | `TODO` |
+| Classification (fixture) | `language=ar` | 24 | 0.758 | [0.561, 0.927] | — |
+| Classification (fixture) | `language=en` | 12 | 0.829 | [0.500, 1.000] | SMALL_SLICE؛ المجال يمتد نصف المدى |
+| Classification (fixture) | `variant=Gulf` | 12 | **0.658** | [0.294, 0.895] | SMALL_SLICE؛ أدنى شريحة variant |
+| Classification (fixture) | `length=long` | 18 | **0.526** | [0.392, 0.831] | ليست SMALL_SLICE؛ المجال لا يلامس المتوسط 0.782 |
+| Retrieval | `language=ar` | 3 | MRR@3 = 0.500 | — | SMALL_SLICE |
+| Retrieval | `language=en` | 3 | MRR@3 = 0.833 | — | SMALL_SLICE |
+| Retrieval | `cross_lingual` | 2 | MRR@3 = 0.500 | — | SMALL_SLICE؛ أصعب وضع |
+| Arabic model comparison | `Gulf frozen test` | 4 | mBERT 0.000 / CAMeLBERT-DA 0.667 | — | بذرة واحدة؛ كل مثال = 25% |
 
 ## 5. مقارنة الإصدارات
 
-- Model A: `TODO`
-- Model B: `TODO`
-- observed difference B−A: `TODO`
-- paired 95% CI: `TODO`
-- القرار المهني: `TODO — هل تدعم CI ادعاءً اتجاهيًا؟ وهل الفرق مهم عمليًا؟`
+- Model A: نظام التنبؤ A في `bayan_day3_predictions.csv` (COURSE_FIXTURE)
+- Model B: نظام التنبؤ B في نفس الملف
+- observed difference B−A: **+0.0012**
+- paired 95% CI: **[−0.105, +0.100]** (bootstrap مزدوج، 1000 تكرار، بذرة 42)
+- القرار المهني: المجال يشمل الصفر، فهذه العينة **لا تدعم ادعاء أفضلية اتجاهية** لأي من النظامين. الفارق المرصود أقل من نقطة مئوية واحدة، أي أصغر بكثير من عدم اليقين في القياس. عمليًا لا يوجد ما يُبنى عليه قرار استبدال. زيادة `n_boot` لن تضيّق المجال — العلاج الوحيد بيانات أكثر.
 
 ## 6. Behavioural tests
 
 | النوع | passed/total | pass rate | فشل مهم |
 |---|---:|---:|---|
-| invariance | `TODO` | `TODO` | `TODO` |
-| directional | `TODO` | `TODO` | `TODO` |
-| minimum functionality | `TODO` | `TODO` | `TODO` |
+| minimum functionality | 3/6 | 0.50 | ثلاثة إخفاقات من نمط واحد: نتيجة صحية أو مسار حافلة صُنّفت في فئة خدمة أخرى |
+| QA no-answer | 1/1 | 1.00 | لا يوجد — أعاد `None` بسبب صريح وmargin = 6.0 |
+| QA valid span | 1/1 | 1.00 | لا يوجد — استخرج "الرياض" بحدود صحيحة |
+
+**قراءة:** الإخفاقات الثلاثة كلها بسبب غلبة الإشارة السياقية (تطبيق، خريطة) على نية المجال. المقياس على مجموعة البيانات يقول «كم»؛ الاختبار السلوكي يقول «هل يحترم العقد في حالة محددة» — و0.50 على ستة عقود واضحة أخطر من 0.782 متوسطًا.
 
 ## 7. تحليل الأخطاء
 
-- المصدر: validation + behavioural failures فقط.
-- عدد الأخطاء المقروءة يدويًا: `TODO`
-- رابط worksheet داخل المستودع: `TODO`
+- المصدر: validation فقط (fixture)
+- عدد الأخطاء المقروءة يدويًا: 8
+- worksheet داخل المستودع: `reports/day3_error_taxonomy.csv`
 
 | taxonomy tag | count | مثال آمن مختصر | الفرضية |
 |---|---:|---|---|
-| `TODO` | `TODO` | `TODO` | `TODO` |
+| dialect_gap | 3 | EV-006: صياغة خليجية لنتيجة صحية مفقودة صُنّفت transport | تغطية اللهجة الخليجية ضعيفة في فئتي الصحة والنقل |
+| hard_or_ambiguous | 3 | EV-031: "The request is stuck" بلا اسم الفئة | النصوص القصيرة تفتقر إلى إشارة كافية للتصنيف |
+| class_confusion | 2 | EV-020: مسار حافلة صُنّف digital_service | ألفاظ التطبيق/الخريطة تغلب نية المجال |
+
+**خطأ إضافي موثق من اليوم الثاني (خارج الـfixture):** "الخدمة الإلكترونية واضحة وسريعة" صُنّفت health بدل digital_service — كلمة "الخدمة" مشتركة بين الفئتين في التدريب، والنظير الإنجليزي صُنّف صحيحًا.
 
 ## 8. الإصلاحات الثلاثة ذات الأولوية
 
 | الأولوية | الدليل | الإجراء | metric/slice المتوقع | الكلفة | اختبار عدم الرجوع |
 |---:|---|---|---|---|---|
-| 1 | `TODO` | `TODO` | `TODO` | `TODO` | `TODO` |
-| 2 | `TODO` | `TODO` | `TODO` | `TODO` | `TODO` |
-| 3 | `TODO` | `TODO` | `TODO` | `TODO` | `TODO` |
+| 1 | `dialect_gap` ×3 وشريحة Gulf = 0.658 (أدنى شريحة variant) | جمع ومراجعة أمثلة خليجية موجّهة لفئتي الصحة والنقل | ارتفاع الحد الأدنى لمجال ثقة `variant=Gulf` | متوسطة — جمع بيانات ومراجعة بشرية | مقارنة مزدوجة تُظهر عدم تراجع MSA وEnglish |
+| 2 | EV-019 وEV-020؛ `class_confusion` ×2 | إضافة أمثلة تقابلية تفصل «تطبيق/حالة» عن «تصريح/مسار»، ومراجعة دليل الوسم | انخفاض أخطاء هذا الزوج بلا إضرار بـmacro-F1 | منخفضة — تعديل دليل وأمثلة | macro-F1 الإجمالي لا ينخفض عن 0.782 |
+| 3 | `hard_or_ambiguous` ×3 وشريحة `length=long` = 0.526 | طلب سياق إضافي أو الامتناع عن التصنيف عند ثقة منخفضة | ارتفاع دقة الشريحة القصيرة الملتبسة | متوسطة — تغيير سلوك الخدمة | مجموعة سلوكية للغموض + عدم زيادة معدل الامتناع على الحالات الواضحة |
 
 ## 9. ما الذي لا تثبته النتائج؟
 
-- `TODO: حجم العينة/التمثيل/بيئة التشغيل/الزمن/المجالات غير المغطاة.`
+- **حجم العينة:** 36 مثالًا في fixture التقييم، 40 في التصنيف، 12 جملة NER، 10 أمثلة QA، 24 حالة بحث. لا شيء منها يكفي لتقدير جودة إنتاجية.
+- **بذرة واحدة:** كل النتائج من بذرة 42 بلا تكرار. لا نعرف تباين النتيجة بين البذور.
+- **مجالات ثقة واسعة:** بعض الشرائح مجالها يمتد نصف المدى الممكن (مثل `language=en`: [0.500, 1.000]).
+- **العتبة غير مختبرة على الحالات الصعبة:** دقة no-answer = 1.000 على الجهتين، لكن استعلامات no-answer في العينة بعيدة موضوعيًا عن الـcorpus (وصفة طبخ، حجز ملعب). الحالة الصعبة — استعلام قريب من الموضوع بلا حالة مطابقة — غير ممثلة إطلاقًا.
+- **بيئة التشغيل:** كل القياسات على CPU في Colab؛ الأزمنة تعتمد على الجلسة ولا تُنسب إلى بيئة إنتاج.
+- **مجالات غير مغطاة:** لهجات عربية أخرى غير الخليجية، Arabizi (مُمرَّر بلا تحويل ولا تقييم)، ونطاقات موضوعية خارج الفئات الأربع.
+- **تنبؤات fixture ليست مخرجات نموذجي:** نتائج القسم 5 و7 تصف ملف تنبؤات تعليميًا من الدورة، ولا تُنسب إلى أي نموذج دربته.
 
 ## 10. خلاصة للإدارة
 
-`TODO: فقرتان فقط — ما الذي يعمل، أين الضعف، وما القرار التالي المدعوم بالدليل.`
+المسار التقني يعمل من طرفه إلى طرفه: نص عربي أو إنجليزي يدخل، يُحفظ في نسخة عرض غير معدَّلة، تُشتق منه نسخة نموذج بـprofile مسماة ومثبتة الإصدار، ثم يُصنَّف ويُستخرج منه كيانات وإجابات ويُبحث عنه دلاليًا. 79 اختبارًا آليًا خضراء، والعقود الحرجة — عدم تسرب المجموعات، تطابق المرمّز مع الـcheckpoint، تطبيع L2 على الجهتين، تجميد العتبة قبل test — كلها موثقة بأدلة قابلة للفحص لا بادعاءات.
+
+الضعف مركَّز في مكانين واضحين: **اللهجة الخليجية** (0.658 مقابل 0.837 للفصحى) و**النصوص الطويلة** (0.526 مقابل 0.829 للقصيرة)، والثانية أقوى إشارة لأنها ليست شريحة صغيرة ومجالها لا يلامس المتوسط. ومعدل نجاح الاختبارات السلوكية 0.50 يكشف ما يخفيه المتوسط 0.782. القرار التالي المدعوم بالدليل: جمع أمثلة خليجية موجّهة لفئتي الصحة والنقل، بمعيار قبول محدد — ارتفاع الحد الأدنى لمجال ثقة شريحة Gulf دون تراجع في الشرائح الأخرى. أما مقارنة النظامين A وB فلا تدعم أي قرار استبدال: الفرق +0.0012 ومجاله [−0.105, +0.100] يشمل الصفر.
