@@ -31,8 +31,19 @@
 
 ## Day 4 — Optimisation, Serving & Submission
 
-- [ ] Notebook 08
-- [ ] BENCHMARKS.md
-- [ ] PROJECT_SUMMARY.json
-- [ ] SUBMISSION.yml
-- [ ] tag `submission-v1.0`
+- [x] Notebook 00 — `BAYAN_ENV_READY = True`
+- [x] Notebook 08 — `DAY4_NOTEBOOK8_CORE=PASS` (ONNX parity 1.000، ADOPT_ONNX_FP32 بتسريع 1.52×، رفض INT8 لتكلفة جودة 0.375)
+- [x] [BENCHMARKS.md](BENCHMARKS.md) مكتمل
+- [x] Day 4 decisions — [DECISIONS.md](DECISIONS.md)
+- [x] [PROJECT_SUMMARY.json](PROJECT_SUMMARY.json) · [SUBMISSION.yml](SUBMISSION.yml)
+- [x] [DATA_CARD.md](DATA_CARD.md) · [MODEL_CARD.md](MODEL_CARD.md) · [STUDENT_PROFILE.md](STUDENT_PROFILE.md)
+- [x] التقارير: `reports/benchmark_results.json` · `reports/service_smoke.json`
+- [x] tag `submission-v1.0`
+
+**Day 4 = complete**
+
+## بنود مفتوحة موثقة
+
+- `benchmark_mode = SYSTEMS_SMOKE` لا `PROJECT_ARTIFACT` — دفتر 08 قاس نموذجًا تجريبيًا برأس غير مدرَّب. موثق في [BENCHMARKS.md](BENCHMARKS.md) قسم 11.
+- رأس `sentiment` غير مدرَّب رغم توفر البيانات. موثق في [MODEL_CARD.md](MODEL_CARD.md) قسم 2.
+- لم يُنفَّذ فحص تشابه نصي آلي للبيانات. موثق في [DATA_CARD.md](DATA_CARD.md).
