@@ -1,0 +1,69 @@
+{
+  "result_type": "MEASURED_SMOKE",
+  "split_contract": {
+    "train": [
+      "A-001",
+      "A-009",
+      "A-003",
+      "A-011",
+      "A-005",
+      "A-013",
+      "A-006",
+      "A-015"
+    ],
+    "validation": [
+      "A-010",
+      "A-012",
+      "A-014",
+      "A-016"
+    ],
+    "frozen_gulf_test": [
+      "A-002",
+      "A-004",
+      "A-008",
+      "A-007"
+    ]
+  },
+  "validation_n": 4,
+  "frozen_gulf_test_n": 4,
+  "one_seed_only": true,
+  "results": [
+    {
+      "model_id": "distilbert/distilbert-base-multilingual-cased",
+      "seed": 42,
+      "training_mode": "last_encoder_block_plus_head",
+      "optimizer_steps": 40,
+      "selected_epoch": 1,
+      "validation_macro_f1": 0.3333333333333333,
+      "gulf_test_macro_f1": 0.0,
+      "gulf_test_predictions": [
+        "permit",
+        "permit",
+        "permit",
+        "transport"
+      ],
+      "elapsed_seconds": 16.4
+    },
+    {
+      "model_id": "CAMeL-Lab/bert-base-arabic-camelbert-da",
+      "seed": 42,
+      "training_mode": "last_encoder_block_plus_head",
+      "optimizer_steps": 40,
+      "selected_epoch": 3,
+      "validation_macro_f1": 0.375,
+      "gulf_test_macro_f1": 0.6666666666666666,
+      "gulf_test_predictions": [
+        "permit",
+        "transport",
+        "health",
+        "permit"
+      ],
+      "elapsed_seconds": 20.77
+    }
+  ],
+  "limitations": [
+    "tiny synthetic dataset",
+    "four-example validation and Gulf test slices",
+    "one seed; descriptive only; no production or population claim"
+  ]
+}
