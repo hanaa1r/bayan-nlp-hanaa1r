@@ -17,3 +17,29 @@ Known limitation:
 - قياس truncation يجب أن يتم قبل enable_truncation، وإلا كل تسلسل يصير بطول max_length والنتيجة 0% حتمًا.
 
 Decision and reason: mBERT مع MAX_LENGTH=12 في هذا الدفتر، وprofile محافظ بلا حذف تشكيل ولا توحيد ألف لأن أيًا منهما لم تثبت فائدته لمهمة محددة بعد. إعادة القياس مطلوبة على corpus حقيقي قبل تثبيت max_length.
+
+
+## Day 2 — Classification, NER & QA decisions
+
+**Checkpoint والسبب:** distilbert/distilbert-base-multilingual-cased — مشفّر متعدد اللغات يغطي العربية والإنجليزية معًا، وأخف من mBERT الكامل فيناسب CPU. المرمّز والأوزان من نفس الـ checkpoint في المهام الثلاث.
+
+**نوع التنفيذ:** partial_finetune_cpu — جمّدت معظم المشفّر وحدّثت آخر Transformer block مع رأس المهمة، لأن الجهاز CPU ولا GPU متاح. في التصنيف: 7,681,540 معامل قابل للتدريب من 135,327,748.
+
+**Split strategy ودليل عدم التسرب:** split مجمّد في ملف البيانات (train 24 / validation 8 / test 8)، مع group_id يمنع تسرب الحالات المتشابهة. الدالة validate_splits تتحقق أن كل مجموعة تنتمي إلى split واحد فقط وأن الفئات الأربع موجودة في كل split. النتيجة: **group_overlap = 0** على 20 مجموعة.
+
+**Baseline وTransformer metric [MEASURED_SMOKE]:**
+- TF-IDF + LinearSVC — validation macro-F1 = 0.6667، test macro-F1 = 0.7333
+- Transformer (الحقبة المختارة 9 من 12) — validation macro-F1 = 1.0000، test macro-F1 = 0.8667، accuracy = 0.875
+- الفرق على validation: **+0.3333**
+- خطأ واحد على test: "الخدمة الإلكترونية واضحة وسريعة" صُنّفت health بدل digital_service. كلمة "الخدمة" مشتركة بين الفئتين في التدريب، والنظير الإنجليزي صُنّف صحيحًا.
+
+**NER alignment policy:** أول subword من كل كلمة يحمل الـ label، وكل ما عداه يأخذ **-100** — أي special tokens ([CLS]/[SEP]/padding) والأجزاء الفرعية التابعة. القياس على **مستوى الكيان** لا على مستوى الرمز: حدود الكيان يجب أن تطابق تمامًا وإلا احتُسب خطأ كاملًا. النتيجة [MEASURED_SMOKE]: entity F1 = 0.5714 (precision 0.667، recall 0.500) على 4 كيانات حقيقية و3 متنبأ بها، بعد 12 حقبة و48 خطوة (mean loss 0.862).
+
+**QA null policy:** أمثلة بلا إجابة تُعيَّن إلى موضع [CLS] في start و end. في post-processing يُحسب null_score من logits الموضع صفر، ويُقارن بأفضل span صالح؛ إذا كان الفارق أكبر من العتبة تُعاد `None` مع سبب صريح. الاختبارات الحتمية: span صالح أعاد "الرياض"، وحالة no-answer أعادت None بالسبب no_answer_in_context وmargin = 6.0. QA loss = 3.645 بعد 3 خطوات فقط.
+
+**ما لا تستطيع العينة الصغيرة إثباته:**
+- 40 صف تصنيف و12 جملة NER و10 أمثلة QA لا تكفي لتقدير جودة إنتاجية.
+- validation من 8 أمثلة استُخدم لاختيار الحقبة، فرقم test متفائل بطبيعته.
+- خطأ واحد على test يساوي 12.5%، فالفروق الصغيرة غير معنوية.
+- QA بعد 3 خطوات لم يتعلم شيئًا ذا دلالة؛ الاختبارات الناجحة تخص صحة post-processing لا جودة النموذج.
+- لتقدير موثوق نحتاج: بيانات أكبر، عدة بذور مع mean ± range، شرائح لغوية منفصلة (ar مقابل en)، وtest مجمّد لا يُقرأ أثناء الضبط.
