@@ -1,0 +1,154 @@
+{
+  "result_label": "SYSTEMS_SMOKE",
+  "artefact_role": "SYSTEMS_SMOKE",
+  "warning": "SYSTEMS_SMOKE proves mechanics only; replace with PROJECT_ARTIFACT for Gate D.",
+  "environment": {
+    "python": "3.13.15",
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.35",
+    "torch": "2.11.0+cpu",
+    "onnx": "1.22.0",
+    "onnxruntime": "1.29.0",
+    "device": "cpu",
+    "ort_provider": "CPUExecutionProvider"
+  },
+  "workload": {
+    "rows": 8,
+    "rows_measured_per_repetition": 8,
+    "batch_size": 4,
+    "languages": [
+      "ar",
+      "en"
+    ],
+    "sha256": "1d1d1c3bef8a582931f6a1c1803671e8fe194fc36ae59cdc4f4feca9fc4d6785",
+    "length": {
+      "p50_tokens": 18.0,
+      "p95_tokens": 28.95,
+      "max_tokens": 30,
+      "configured_max_length": 96,
+      "would_truncate": 0
+    }
+  },
+  "budget": {
+    "max_p95_ms": 1000.0,
+    "min_throughput_items_s": 0.1,
+    "max_quality_tax": 0.05,
+    "target_device": "colab-cpu"
+  },
+  "budget_provenance": "COURSE_EXAMPLE_FOR_SYSTEMS_SMOKE",
+  "measurement": {
+    "warmup": 5,
+    "repetitions": 30,
+    "boundary": "model_only_primary_and_pytorch_end_to_end_secondary",
+    "memory_method": "process RSS start and observed peak; approximate"
+  },
+  "pytorch_fp32": {
+    "model_only": {
+      "warmup": 5,
+      "repetitions": 30,
+      "items_per_call": 8,
+      "p50_ms": 19.2832795,
+      "p95_ms": 37.554273699999996,
+      "p99_ms": 40.65614197000001,
+      "mean_ms": 22.36109336666667,
+      "min_ms": 13.481232,
+      "max_ms": 41.921269,
+      "throughput_items_s": 357.764259055663,
+      "rss_start_mb": 657.73828125,
+      "rss_peak_observed_mb": 658.01171875,
+      "rss_observed_delta_mb": 0.2734375
+    },
+    "end_to_end": {
+      "warmup": 5,
+      "repetitions": 30,
+      "items_per_call": 8,
+      "p50_ms": 18.252534500000003,
+      "p95_ms": 50.2623064,
+      "p99_ms": 61.768280480000016,
+      "mean_ms": 24.2073054,
+      "min_ms": 15.550578,
+      "max_ms": 65.906142,
+      "throughput_items_s": 330.47874878300166,
+      "rss_start_mb": 658.078125,
+      "rss_peak_observed_mb": 658.27734375,
+      "rss_observed_delta_mb": 0.19921875
+    },
+    "parameter_size_mib": 16.732433319091797,
+    "state_sha256": "b413ec986cbb7c7c4c3c1a6da3e088299f0848bc6d3eb45af917b821d88774df",
+    "quality_metric": "prediction_agreement_to_fp32_not_task_quality",
+    "quality": 1.0
+  },
+  "onnx_fp32": {
+    "model_only": {
+      "warmup": 5,
+      "repetitions": 30,
+      "items_per_call": 8,
+      "p50_ms": 8.372174999999999,
+      "p95_ms": 24.65269505,
+      "p99_ms": 28.38757366,
+      "mean_ms": 11.417782033333333,
+      "min_ms": 7.617728,
+      "max_ms": 29.374341,
+      "throughput_items_s": 700.6614749383565,
+      "rss_start_mb": 746.9375,
+      "rss_peak_observed_mb": 746.9375,
+      "rss_observed_delta_mb": 0.0
+    },
+    "parity": {
+      "max_abs_logits_diff": 2.0489096641540527e-07,
+      "mean_abs_logits_diff": 5.634986521840801e-08,
+      "prediction_agreement": 1.0
+    },
+    "size_mib": 16.787826538085938,
+    "sha256": "8188bfee912b9c9bc6bd8d9241319dee196ed64c606093c89d47b07610846731",
+    "quality": 1.0,
+    "quality_tax": 0.0,
+    "budget": {
+      "latency_ok": true,
+      "quality_ok": true,
+      "throughput_ok": true,
+      "budget_met": true
+    },
+    "p95_speedup_vs_pytorch": 1.5233333971735474
+  },
+  "onnx_dynamic_int8": {
+    "status": {
+      "attempted": true,
+      "available": true,
+      "error": null
+    },
+    "model_only": {
+      "warmup": 5,
+      "repetitions": 30,
+      "items_per_call": 8,
+      "p50_ms": 6.760994999999999,
+      "p95_ms": 10.030839300000002,
+      "p99_ms": 14.329072590000004,
+      "mean_ms": 7.396812266666667,
+      "min_ms": 6.485562,
+      "max_ms": 15.602007,
+      "throughput_items_s": 1081.546984239625,
+      "rss_start_mb": 748.109375,
+      "rss_peak_observed_mb": 748.109375,
+      "rss_observed_delta_mb": 0.0
+    },
+    "parity": {
+      "max_abs_logits_diff": 0.023979216814041138,
+      "mean_abs_logits_diff": 0.009908975102007389,
+      "prediction_agreement": 0.625
+    },
+    "size_mib": 4.287415504455566,
+    "sha256": "1982a7eac279a4a20990193e672444c88babad59e4960935f4a0860579db6f6c",
+    "quality": 0.625,
+    "quality_tax": 0.375,
+    "budget": {
+      "latency_ok": true,
+      "quality_ok": false,
+      "throughput_ok": true,
+      "budget_met": false
+    }
+  },
+  "selected_for_service": "onnx-fp32",
+  "adoption_decision": "ADOPT_ONNX_FP32",
+  "decision_scope": "SYSTEMS_SMOKE_NOT_A_SHIP_DECISION",
+  "fp32_rollback": "Re-export from recorded MODEL_SOURCE; weights stay outside GitHub."
+}
