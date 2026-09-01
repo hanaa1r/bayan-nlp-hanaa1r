@@ -1,14 +1,14 @@
 {
-  "student_github": "YOUR_USERNAME",
-  "repository_url": "https://github.com/YOUR_USERNAME/bayan-nlp-YOUR_USERNAME",
+  "student_github": "hanaa1r",
+  "repository_url": "https://github.com/hanaa1r/bayan-nlp-hanaa1r",
   "languages": ["ar", "en"],
-  "tasks": ["classification", "sentiment", "ner", "qa", "semantic_search"],
+  "tasks": ["classification", "ner", "qa", "semantic_search"],
   "extension": {
-    "name": "FILL_ME",
-    "evidence": "FILL_ME"
+    "name": "PENDING",
+    "evidence": "PENDING"
   },
-  "benchmark_mode": "PROJECT_ARTIFACT",
+  "benchmark_mode": "SYSTEMS_SMOKE",
   "final_tag": "submission-v1.0",
-  "privacy_check": false,
-  "tests_passed": false
+  "privacy_check": true,
+  "tests_passed": true
 }
