@@ -80,17 +80,19 @@ def main() -> int:
         failures.append(f"T7 evidence unavailable: {exc}")
 
     try:
-        behaviour = load_json(root / "reports/behavioural_metrics.json")
-        require("T8-MFT", float(behaviour["mft_pass_rate"]) >= 0.90, "MFT >= 90%")
+        behaviour = load_json(root / "reports/behavioral_metrics.json")
+        require("T8-MFT", float(nested(behaviour, "mft.pass_rate")) >= 0.90, "MFT >= 90%")
         require(
             "T8-invariance",
-            float(behaviour["invariance_pass_rate"]) >= 0.95,
+            float(nested(behaviour, "invariance.pass_rate")) >= 0.95,
             "invariance >= 95%",
         )
+        errors = load_json(root / "reports/error_analysis.json")
         require(
             "T9",
-            int(behaviour["manually_reviewed_errors"]) >= 100,
-            "at least 100 errors reviewed and classified",
+            int(errors["reviewed_error_instances"]) >= 100
+            and len(errors.get("top_fixes", [])) >= 3,
+            "at least 100 disclosed review rows classified with three ranked fixes",
         )
     except (OSError, ValueError, KeyError, TypeError) as exc:
         failures.append(f"T8/T9 evidence unavailable: {exc}")
