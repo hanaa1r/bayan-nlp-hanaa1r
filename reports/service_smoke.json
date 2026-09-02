@@ -1,17 +1,18 @@
 {
-  "result_label": "SYSTEMS_SMOKE",
-  "artefact_role": "SYSTEMS_SMOKE",
+  "result_label": "MEASURED",
+  "artefact_role": "PROJECT_ARTIFACT",
   "manifest": {
-    "model_id": "google/bert_uncased_L-2_H-128_A-2",
-    "model_version": "systems-smoke-v1",
+    "model_id": "/content/bayan-nlp-hanaa1r/artifacts/project-v1/topic",
+    "model_version": "project-v1",
     "preprocessing_version": "ar-en-v1",
-    "runtime": "onnx-fp32",
+    "runtime": "pytorch-fp32",
     "label_map": {
-      "0": "LABEL_0",
-      "1": "LABEL_1",
-      "2": "LABEL_2"
+      "0": "digital_service",
+      "1": "health",
+      "2": "permit",
+      "3": "transport"
     },
-    "artifact_sha256": "8188bfee912b9c9bc6bd8d9241319dee196ed64c606093c89d47b07610846731"
+    "artifact_sha256": "d9a601eeafbc23138abae55015e49c5ef2a443aacf7134659df7769a04b9c9f5"
   },
   "tests": {
     "health": 200,
@@ -23,12 +24,12 @@
       {
         "name": "arabic-contract",
         "status": "PASS",
-        "label": "LABEL_2"
+        "label": "health"
       },
       {
         "name": "english-contract",
         "status": "PASS",
-        "label": "LABEL_2"
+        "label": "transport"
       }
     ]
   }
