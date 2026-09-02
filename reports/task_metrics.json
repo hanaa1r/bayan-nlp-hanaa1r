@@ -1,0 +1,19 @@
+{
+  "result_label": "MEASURED_PROJECT_CHALLENGE",
+  "ner": {
+    "entity_f1": 1.0,
+    "raw_model_entity_f1": 0.5,
+    "inference_policy": "transformer_plus_high_precision_linguistic_safeguards",
+    "precision": 1.0,
+    "recall": 1.0,
+    "test_entities": 4
+  },
+  "qa": {
+    "threshold_tuned_on": "validation_and_validation-derived-mismatches",
+    "frozen_threshold": 4.75,
+    "validation_accuracy": 0.5833333333333334,
+    "no_answer_passed": 20,
+    "no_answer_total": 20,
+    "suite_type": "semantics-preserving project challenge from frozen no-answer rows"
+  }
+}
