@@ -4,10 +4,10 @@
   "languages": ["ar", "en"],
   "tasks": ["classification", "sentiment", "ner", "qa", "semantic_search"],
   "extension": {
-    "name": "reranking-tradeoff",
-    "evidence": "reports/retrieval_metrics.json"
+    "name": "batch-classification-endpoint",
+    "evidence": "reports/extension_metrics.json"
   },
-  "benchmark_mode": "SYSTEMS_SMOKE",
+  "benchmark_mode": "PROJECT_ARTIFACT",
   "final_tag": "submission-v1.0",
   "privacy_check": true,
   "tests_passed": true

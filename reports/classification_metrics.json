@@ -1,0 +1,165 @@
+{
+  "result_label": "MEASURED_PROJECT_ARTIFACT",
+  "device": "cpu",
+  "data": "data/sample/bayan_day2_classification.csv",
+  "split_contract": "group-isolated train/validation/test",
+  "topic": {
+    "model_id": "distilbert/distilbert-base-multilingual-cased",
+    "artifact_path": "/content/bayan-nlp-hanaa1r/artifacts/project-v1/topic",
+    "labels": [
+      "digital_service",
+      "health",
+      "permit",
+      "transport"
+    ],
+    "seed": 42,
+    "selected_epoch": 8,
+    "tfidf_macro_f1": 0.6666666666666666,
+    "transformer_macro_f1": 1.0,
+    "delta_vs_tfidf": 0.33333333333333337,
+    "test_macro_f1": 0.8666666666666667,
+    "test_accuracy": 0.875,
+    "history": [
+      {
+        "epoch": 1,
+        "loss": 1.4249125321706135,
+        "validation_macro_f1": 0.2777777777777778
+      },
+      {
+        "epoch": 2,
+        "loss": 1.2966862320899963,
+        "validation_macro_f1": 0.34285714285714286
+      },
+      {
+        "epoch": 3,
+        "loss": 1.1810848712921143,
+        "validation_macro_f1": 0.6249999999999999
+      },
+      {
+        "epoch": 4,
+        "loss": 0.9700184067090353,
+        "validation_macro_f1": 0.6428571428571428
+      },
+      {
+        "epoch": 5,
+        "loss": 0.6313335299491882,
+        "validation_macro_f1": 0.8666666666666667
+      },
+      {
+        "epoch": 6,
+        "loss": 0.38479888687531155,
+        "validation_macro_f1": 0.75
+      },
+      {
+        "epoch": 7,
+        "loss": 0.17135272547602654,
+        "validation_macro_f1": 0.75
+      },
+      {
+        "epoch": 8,
+        "loss": 0.08169070196648438,
+        "validation_macro_f1": 1.0
+      },
+      {
+        "epoch": 9,
+        "loss": 0.03076185192912817,
+        "validation_macro_f1": 1.0
+      },
+      {
+        "epoch": 10,
+        "loss": 0.016261717925469082,
+        "validation_macro_f1": 1.0
+      },
+      {
+        "epoch": 11,
+        "loss": 0.009963507453600565,
+        "validation_macro_f1": 0.8666666666666667
+      },
+      {
+        "epoch": 12,
+        "loss": 0.006803877341250579,
+        "validation_macro_f1": 0.8666666666666667
+      }
+    ],
+    "test_opened_once_after_selection": true
+  },
+  "sentiment": {
+    "model_id": "distilbert/distilbert-base-multilingual-cased",
+    "artifact_path": "/content/bayan-nlp-hanaa1r/artifacts/project-v1/sentiment",
+    "labels": [
+      "negative",
+      "neutral",
+      "positive"
+    ],
+    "seed": 42,
+    "selected_epoch": 7,
+    "tfidf_macro_f1": 0.07407407407407407,
+    "transformer_macro_f1": 0.41269841269841273,
+    "delta_vs_tfidf": 0.33862433862433866,
+    "test_macro_f1": 0.5333333333333333,
+    "test_accuracy": 0.75,
+    "history": [
+      {
+        "epoch": 1,
+        "loss": 1.1045752167701721,
+        "validation_macro_f1": 0.13333333333333333
+      },
+      {
+        "epoch": 2,
+        "loss": 1.0049630204836528,
+        "validation_macro_f1": 0.13333333333333333
+      },
+      {
+        "epoch": 3,
+        "loss": 0.8905765116214752,
+        "validation_macro_f1": 0.3333333333333333
+      },
+      {
+        "epoch": 4,
+        "loss": 0.723719080289205,
+        "validation_macro_f1": 0.3333333333333333
+      },
+      {
+        "epoch": 5,
+        "loss": 0.5097724546988806,
+        "validation_macro_f1": 0.3333333333333333
+      },
+      {
+        "epoch": 6,
+        "loss": 0.27763030926386517,
+        "validation_macro_f1": 0.3333333333333333
+      },
+      {
+        "epoch": 7,
+        "loss": 0.11728951955835025,
+        "validation_macro_f1": 0.41269841269841273
+      },
+      {
+        "epoch": 8,
+        "loss": 0.04113175316403309,
+        "validation_macro_f1": 0.41269841269841273
+      },
+      {
+        "epoch": 9,
+        "loss": 0.014283695879081884,
+        "validation_macro_f1": 0.41269841269841273
+      },
+      {
+        "epoch": 10,
+        "loss": 0.006926354952156544,
+        "validation_macro_f1": 0.41269841269841273
+      },
+      {
+        "epoch": 11,
+        "loss": 0.004303155350498855,
+        "validation_macro_f1": 0.41269841269841273
+      },
+      {
+        "epoch": 12,
+        "loss": 0.0033998676032448807,
+        "validation_macro_f1": 0.41269841269841273
+      }
+    ],
+    "test_opened_once_after_selection": true
+  }
+}

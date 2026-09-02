@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+tmp/
+artifacts/
+*.onnx
+*.pt
+*.pth
+*.safetensors
+.env

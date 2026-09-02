@@ -1,0 +1,34 @@
+{
+  "result_label": "STRUCTURED_REVIEW_WITH_CONTROLLED_VARIANTS",
+  "reviewed_error_instances": 104,
+  "independent_base_errors": 8,
+  "disclosure": "104 rows are 13 controlled variants of eight individually reasoned validation errors",
+  "taxonomy_counts": {
+    "dialect_gap": 39,
+    "hard_or_ambiguous": 39,
+    "class_confusion": 26
+  },
+  "top_fixes": [
+    {
+      "priority": 1,
+      "issue": "Gulf coverage for health and transport",
+      "evidence": "dialect_gap tags in validation fixture",
+      "change": "collect/review targeted Gulf examples",
+      "acceptance_test": "new behavioural cases plus sliced CI"
+    },
+    {
+      "priority": 2,
+      "issue": "class confusion around app/status wording",
+      "evidence": "EV-019 and EV-020",
+      "change": "add contrastive examples and review label guide",
+      "acceptance_test": "paired comparison without regression in other slices"
+    },
+    {
+      "priority": 3,
+      "issue": "underspecified short requests",
+      "evidence": "hard_or_ambiguous tags",
+      "change": "request context or abstain when confidence is low",
+      "acceptance_test": "ambiguity behavioural suite"
+    }
+  ]
+}

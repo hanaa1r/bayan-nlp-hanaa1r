@@ -1,0 +1,14 @@
+{
+  "result_label": "MEASURED_PROJECT_POLICY",
+  "mft": {
+    "passed": 40,
+    "total": 40,
+    "pass_rate": 1.0
+  },
+  "invariance": {
+    "passed": 40,
+    "total": 40,
+    "pass_rate": 1.0,
+    "transform": "whitespace_and_punctuation"
+  }
+}

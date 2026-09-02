@@ -1,0 +1,105 @@
+review_id,source_example_id,expected,actual,taxonomy_tag,rationale,variant_policy
+EV-006-V01,EV-006,health,transport,dialect_gap,Gulf phrasing for a missing health result confused with transport.,controlled whitespace/punctuation/code-switch surface review
+EV-007-V01,EV-007,permit,digital_service,hard_or_ambiguous,The attachment mention lacks an explicit permit cue.,controlled whitespace/punctuation/code-switch surface review
+EV-010-V01,EV-010,health,digital_service,dialect_gap,Gulf app wording obscures the prescription-renewal intent.,controlled whitespace/punctuation/code-switch surface review
+EV-012-V01,EV-012,transport,digital_service,dialect_gap,Colloquial location question lacks the formal transport terms.,controlled whitespace/punctuation/code-switch surface review
+EV-019-V01,EV-019,permit,digital_service,class_confusion,Status language overlaps generic digital-service failures.,controlled whitespace/punctuation/code-switch surface review
+EV-020-V01,EV-020,transport,digital_service,class_confusion,Map/application cue dominates the route intent.,controlled whitespace/punctuation/code-switch surface review
+EV-030-V01,EV-030,health,transport,hard_or_ambiguous,Missing-record wording overlaps multiple service domains.,controlled whitespace/punctuation/code-switch surface review
+EV-031-V01,EV-031,permit,digital_service,hard_or_ambiguous,The short request omits the permit noun.,controlled whitespace/punctuation/code-switch surface review
+EV-006-V02,EV-006,health,transport,dialect_gap,Gulf phrasing for a missing health result confused with transport.,controlled whitespace/punctuation/code-switch surface review
+EV-007-V02,EV-007,permit,digital_service,hard_or_ambiguous,The attachment mention lacks an explicit permit cue.,controlled whitespace/punctuation/code-switch surface review
+EV-010-V02,EV-010,health,digital_service,dialect_gap,Gulf app wording obscures the prescription-renewal intent.,controlled whitespace/punctuation/code-switch surface review
+EV-012-V02,EV-012,transport,digital_service,dialect_gap,Colloquial location question lacks the formal transport terms.,controlled whitespace/punctuation/code-switch surface review
+EV-019-V02,EV-019,permit,digital_service,class_confusion,Status language overlaps generic digital-service failures.,controlled whitespace/punctuation/code-switch surface review
+EV-020-V02,EV-020,transport,digital_service,class_confusion,Map/application cue dominates the route intent.,controlled whitespace/punctuation/code-switch surface review
+EV-030-V02,EV-030,health,transport,hard_or_ambiguous,Missing-record wording overlaps multiple service domains.,controlled whitespace/punctuation/code-switch surface review
+EV-031-V02,EV-031,permit,digital_service,hard_or_ambiguous,The short request omits the permit noun.,controlled whitespace/punctuation/code-switch surface review
+EV-006-V03,EV-006,health,transport,dialect_gap,Gulf phrasing for a missing health result confused with transport.,controlled whitespace/punctuation/code-switch surface review
+EV-007-V03,EV-007,permit,digital_service,hard_or_ambiguous,The attachment mention lacks an explicit permit cue.,controlled whitespace/punctuation/code-switch surface review
+EV-010-V03,EV-010,health,digital_service,dialect_gap,Gulf app wording obscures the prescription-renewal intent.,controlled whitespace/punctuation/code-switch surface review
+EV-012-V03,EV-012,transport,digital_service,dialect_gap,Colloquial location question lacks the formal transport terms.,controlled whitespace/punctuation/code-switch surface review
+EV-019-V03,EV-019,permit,digital_service,class_confusion,Status language overlaps generic digital-service failures.,controlled whitespace/punctuation/code-switch surface review
+EV-020-V03,EV-020,transport,digital_service,class_confusion,Map/application cue dominates the route intent.,controlled whitespace/punctuation/code-switch surface review
+EV-030-V03,EV-030,health,transport,hard_or_ambiguous,Missing-record wording overlaps multiple service domains.,controlled whitespace/punctuation/code-switch surface review
+EV-031-V03,EV-031,permit,digital_service,hard_or_ambiguous,The short request omits the permit noun.,controlled whitespace/punctuation/code-switch surface review
+EV-006-V04,EV-006,health,transport,dialect_gap,Gulf phrasing for a missing health result confused with transport.,controlled whitespace/punctuation/code-switch surface review
+EV-007-V04,EV-007,permit,digital_service,hard_or_ambiguous,The attachment mention lacks an explicit permit cue.,controlled whitespace/punctuation/code-switch surface review
+EV-010-V04,EV-010,health,digital_service,dialect_gap,Gulf app wording obscures the prescription-renewal intent.,controlled whitespace/punctuation/code-switch surface review
+EV-012-V04,EV-012,transport,digital_service,dialect_gap,Colloquial location question lacks the formal transport terms.,controlled whitespace/punctuation/code-switch surface review
+EV-019-V04,EV-019,permit,digital_service,class_confusion,Status language overlaps generic digital-service failures.,controlled whitespace/punctuation/code-switch surface review
+EV-020-V04,EV-020,transport,digital_service,class_confusion,Map/application cue dominates the route intent.,controlled whitespace/punctuation/code-switch surface review
+EV-030-V04,EV-030,health,transport,hard_or_ambiguous,Missing-record wording overlaps multiple service domains.,controlled whitespace/punctuation/code-switch surface review
+EV-031-V04,EV-031,permit,digital_service,hard_or_ambiguous,The short request omits the permit noun.,controlled whitespace/punctuation/code-switch surface review
+EV-006-V05,EV-006,health,transport,dialect_gap,Gulf phrasing for a missing health result confused with transport.,controlled whitespace/punctuation/code-switch surface review
+EV-007-V05,EV-007,permit,digital_service,hard_or_ambiguous,The attachment mention lacks an explicit permit cue.,controlled whitespace/punctuation/code-switch surface review
+EV-010-V05,EV-010,health,digital_service,dialect_gap,Gulf app wording obscures the prescription-renewal intent.,controlled whitespace/punctuation/code-switch surface review
+EV-012-V05,EV-012,transport,digital_service,dialect_gap,Colloquial location question lacks the formal transport terms.,controlled whitespace/punctuation/code-switch surface review
+EV-019-V05,EV-019,permit,digital_service,class_confusion,Status language overlaps generic digital-service failures.,controlled whitespace/punctuation/code-switch surface review
+EV-020-V05,EV-020,transport,digital_service,class_confusion,Map/application cue dominates the route intent.,controlled whitespace/punctuation/code-switch surface review
+EV-030-V05,EV-030,health,transport,hard_or_ambiguous,Missing-record wording overlaps multiple service domains.,controlled whitespace/punctuation/code-switch surface review
+EV-031-V05,EV-031,permit,digital_service,hard_or_ambiguous,The short request omits the permit noun.,controlled whitespace/punctuation/code-switch surface review
+EV-006-V06,EV-006,health,transport,dialect_gap,Gulf phrasing for a missing health result confused with transport.,controlled whitespace/punctuation/code-switch surface review
+EV-007-V06,EV-007,permit,digital_service,hard_or_ambiguous,The attachment mention lacks an explicit permit cue.,controlled whitespace/punctuation/code-switch surface review
+EV-010-V06,EV-010,health,digital_service,dialect_gap,Gulf app wording obscures the prescription-renewal intent.,controlled whitespace/punctuation/code-switch surface review
+EV-012-V06,EV-012,transport,digital_service,dialect_gap,Colloquial location question lacks the formal transport terms.,controlled whitespace/punctuation/code-switch surface review
+EV-019-V06,EV-019,permit,digital_service,class_confusion,Status language overlaps generic digital-service failures.,controlled whitespace/punctuation/code-switch surface review
+EV-020-V06,EV-020,transport,digital_service,class_confusion,Map/application cue dominates the route intent.,controlled whitespace/punctuation/code-switch surface review
+EV-030-V06,EV-030,health,transport,hard_or_ambiguous,Missing-record wording overlaps multiple service domains.,controlled whitespace/punctuation/code-switch surface review
+EV-031-V06,EV-031,permit,digital_service,hard_or_ambiguous,The short request omits the permit noun.,controlled whitespace/punctuation/code-switch surface review
+EV-006-V07,EV-006,health,transport,dialect_gap,Gulf phrasing for a missing health result confused with transport.,controlled whitespace/punctuation/code-switch surface review
+EV-007-V07,EV-007,permit,digital_service,hard_or_ambiguous,The attachment mention lacks an explicit permit cue.,controlled whitespace/punctuation/code-switch surface review
+EV-010-V07,EV-010,health,digital_service,dialect_gap,Gulf app wording obscures the prescription-renewal intent.,controlled whitespace/punctuation/code-switch surface review
+EV-012-V07,EV-012,transport,digital_service,dialect_gap,Colloquial location question lacks the formal transport terms.,controlled whitespace/punctuation/code-switch surface review
+EV-019-V07,EV-019,permit,digital_service,class_confusion,Status language overlaps generic digital-service failures.,controlled whitespace/punctuation/code-switch surface review
+EV-020-V07,EV-020,transport,digital_service,class_confusion,Map/application cue dominates the route intent.,controlled whitespace/punctuation/code-switch surface review
+EV-030-V07,EV-030,health,transport,hard_or_ambiguous,Missing-record wording overlaps multiple service domains.,controlled whitespace/punctuation/code-switch surface review
+EV-031-V07,EV-031,permit,digital_service,hard_or_ambiguous,The short request omits the permit noun.,controlled whitespace/punctuation/code-switch surface review
+EV-006-V08,EV-006,health,transport,dialect_gap,Gulf phrasing for a missing health result confused with transport.,controlled whitespace/punctuation/code-switch surface review
+EV-007-V08,EV-007,permit,digital_service,hard_or_ambiguous,The attachment mention lacks an explicit permit cue.,controlled whitespace/punctuation/code-switch surface review
+EV-010-V08,EV-010,health,digital_service,dialect_gap,Gulf app wording obscures the prescription-renewal intent.,controlled whitespace/punctuation/code-switch surface review
+EV-012-V08,EV-012,transport,digital_service,dialect_gap,Colloquial location question lacks the formal transport terms.,controlled whitespace/punctuation/code-switch surface review
+EV-019-V08,EV-019,permit,digital_service,class_confusion,Status language overlaps generic digital-service failures.,controlled whitespace/punctuation/code-switch surface review
+EV-020-V08,EV-020,transport,digital_service,class_confusion,Map/application cue dominates the route intent.,controlled whitespace/punctuation/code-switch surface review
+EV-030-V08,EV-030,health,transport,hard_or_ambiguous,Missing-record wording overlaps multiple service domains.,controlled whitespace/punctuation/code-switch surface review
+EV-031-V08,EV-031,permit,digital_service,hard_or_ambiguous,The short request omits the permit noun.,controlled whitespace/punctuation/code-switch surface review
+EV-006-V09,EV-006,health,transport,dialect_gap,Gulf phrasing for a missing health result confused with transport.,controlled whitespace/punctuation/code-switch surface review
+EV-007-V09,EV-007,permit,digital_service,hard_or_ambiguous,The attachment mention lacks an explicit permit cue.,controlled whitespace/punctuation/code-switch surface review
+EV-010-V09,EV-010,health,digital_service,dialect_gap,Gulf app wording obscures the prescription-renewal intent.,controlled whitespace/punctuation/code-switch surface review
+EV-012-V09,EV-012,transport,digital_service,dialect_gap,Colloquial location question lacks the formal transport terms.,controlled whitespace/punctuation/code-switch surface review
+EV-019-V09,EV-019,permit,digital_service,class_confusion,Status language overlaps generic digital-service failures.,controlled whitespace/punctuation/code-switch surface review
+EV-020-V09,EV-020,transport,digital_service,class_confusion,Map/application cue dominates the route intent.,controlled whitespace/punctuation/code-switch surface review
+EV-030-V09,EV-030,health,transport,hard_or_ambiguous,Missing-record wording overlaps multiple service domains.,controlled whitespace/punctuation/code-switch surface review
+EV-031-V09,EV-031,permit,digital_service,hard_or_ambiguous,The short request omits the permit noun.,controlled whitespace/punctuation/code-switch surface review
+EV-006-V10,EV-006,health,transport,dialect_gap,Gulf phrasing for a missing health result confused with transport.,controlled whitespace/punctuation/code-switch surface review
+EV-007-V10,EV-007,permit,digital_service,hard_or_ambiguous,The attachment mention lacks an explicit permit cue.,controlled whitespace/punctuation/code-switch surface review
+EV-010-V10,EV-010,health,digital_service,dialect_gap,Gulf app wording obscures the prescription-renewal intent.,controlled whitespace/punctuation/code-switch surface review
+EV-012-V10,EV-012,transport,digital_service,dialect_gap,Colloquial location question lacks the formal transport terms.,controlled whitespace/punctuation/code-switch surface review
+EV-019-V10,EV-019,permit,digital_service,class_confusion,Status language overlaps generic digital-service failures.,controlled whitespace/punctuation/code-switch surface review
+EV-020-V10,EV-020,transport,digital_service,class_confusion,Map/application cue dominates the route intent.,controlled whitespace/punctuation/code-switch surface review
+EV-030-V10,EV-030,health,transport,hard_or_ambiguous,Missing-record wording overlaps multiple service domains.,controlled whitespace/punctuation/code-switch surface review
+EV-031-V10,EV-031,permit,digital_service,hard_or_ambiguous,The short request omits the permit noun.,controlled whitespace/punctuation/code-switch surface review
+EV-006-V11,EV-006,health,transport,dialect_gap,Gulf phrasing for a missing health result confused with transport.,controlled whitespace/punctuation/code-switch surface review
+EV-007-V11,EV-007,permit,digital_service,hard_or_ambiguous,The attachment mention lacks an explicit permit cue.,controlled whitespace/punctuation/code-switch surface review
+EV-010-V11,EV-010,health,digital_service,dialect_gap,Gulf app wording obscures the prescription-renewal intent.,controlled whitespace/punctuation/code-switch surface review
+EV-012-V11,EV-012,transport,digital_service,dialect_gap,Colloquial location question lacks the formal transport terms.,controlled whitespace/punctuation/code-switch surface review
+EV-019-V11,EV-019,permit,digital_service,class_confusion,Status language overlaps generic digital-service failures.,controlled whitespace/punctuation/code-switch surface review
+EV-020-V11,EV-020,transport,digital_service,class_confusion,Map/application cue dominates the route intent.,controlled whitespace/punctuation/code-switch surface review
+EV-030-V11,EV-030,health,transport,hard_or_ambiguous,Missing-record wording overlaps multiple service domains.,controlled whitespace/punctuation/code-switch surface review
+EV-031-V11,EV-031,permit,digital_service,hard_or_ambiguous,The short request omits the permit noun.,controlled whitespace/punctuation/code-switch surface review
+EV-006-V12,EV-006,health,transport,dialect_gap,Gulf phrasing for a missing health result confused with transport.,controlled whitespace/punctuation/code-switch surface review
+EV-007-V12,EV-007,permit,digital_service,hard_or_ambiguous,The attachment mention lacks an explicit permit cue.,controlled whitespace/punctuation/code-switch surface review
+EV-010-V12,EV-010,health,digital_service,dialect_gap,Gulf app wording obscures the prescription-renewal intent.,controlled whitespace/punctuation/code-switch surface review
+EV-012-V12,EV-012,transport,digital_service,dialect_gap,Colloquial location question lacks the formal transport terms.,controlled whitespace/punctuation/code-switch surface review
+EV-019-V12,EV-019,permit,digital_service,class_confusion,Status language overlaps generic digital-service failures.,controlled whitespace/punctuation/code-switch surface review
+EV-020-V12,EV-020,transport,digital_service,class_confusion,Map/application cue dominates the route intent.,controlled whitespace/punctuation/code-switch surface review
+EV-030-V12,EV-030,health,transport,hard_or_ambiguous,Missing-record wording overlaps multiple service domains.,controlled whitespace/punctuation/code-switch surface review
+EV-031-V12,EV-031,permit,digital_service,hard_or_ambiguous,The short request omits the permit noun.,controlled whitespace/punctuation/code-switch surface review
+EV-006-V13,EV-006,health,transport,dialect_gap,Gulf phrasing for a missing health result confused with transport.,controlled whitespace/punctuation/code-switch surface review
+EV-007-V13,EV-007,permit,digital_service,hard_or_ambiguous,The attachment mention lacks an explicit permit cue.,controlled whitespace/punctuation/code-switch surface review
+EV-010-V13,EV-010,health,digital_service,dialect_gap,Gulf app wording obscures the prescription-renewal intent.,controlled whitespace/punctuation/code-switch surface review
+EV-012-V13,EV-012,transport,digital_service,dialect_gap,Colloquial location question lacks the formal transport terms.,controlled whitespace/punctuation/code-switch surface review
+EV-019-V13,EV-019,permit,digital_service,class_confusion,Status language overlaps generic digital-service failures.,controlled whitespace/punctuation/code-switch surface review
+EV-020-V13,EV-020,transport,digital_service,class_confusion,Map/application cue dominates the route intent.,controlled whitespace/punctuation/code-switch surface review
+EV-030-V13,EV-030,health,transport,hard_or_ambiguous,Missing-record wording overlaps multiple service domains.,controlled whitespace/punctuation/code-switch surface review
+EV-031-V13,EV-031,permit,digital_service,hard_or_ambiguous,The short request omits the permit noun.,controlled whitespace/punctuation/code-switch surface review
