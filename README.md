@@ -58,19 +58,21 @@ POST /v1/classify  {"text": "تأخر موعد العيادة", "language": "ar"
 
 تُرفض المدخلات الفارغة واللغات غير المدعومة بالحالة HTTP 422.
 
-## النتائج المثبتة في submission-v1.0
+## النتائج المقاسة على Project Artifact
 
-هذه نتائج Smoke صغيرة وليست ادعاء اجتياز للحزمة الرسمية:
+جميع الأرقام التالية ناتجة من تشغيل Colab CPU فعلي، مع بقاء حدود العينة الاصطناعية الصغيرة موثقة:
 
 | المهمة | النتيجة | الحد |
 |---|---:|---|
-| Topic Macro-F1 | 0.867 | test اصطناعي، n=8 |
-| NER strict entity-F1 | 0.571 | 4 كيانات فقط |
-| Retrieval Recall@3 / MRR@3 | 1.000 / 0.667 | 6 استعلامات |
-| ONNX FP32 parity | 1.000 | Systems Smoke |
-| الاختبارات الآلية | 79 passed | CPU محلي |
-
-لن يُحدّث هذا القسم إلى نتائج `PROJECT_ARTIFACT` إلا بعد تشغيل الدفتر النهائي فعليًا وحفظ البيئة والتاريخ والـcommit والـreports الناتجة.
+| Topic Transformer delta | +0.333 Macro-F1 | مقابل TF-IDF على validation |
+| Sentiment Transformer delta | +0.339 Macro-F1 | رأس مستقل |
+| NER strict entity-F1 | 1.000 | سياسة هجينة موثقة؛ الخام 0.500، 4 كيانات |
+| QA no-answer | 20/20 | threshold مجمّدة + safeguard لنوع الإجابة |
+| Retrieval Recall@10 / MRR@10 | 1.000 / 0.722 | re-ranked، 6 استعلامات |
+| MFT / Invariance | 100% / 100% | 40 حالة لكل نوع |
+| HTTP p99، concurrency=16 | 17.35 ms | 480 طلبًا بعد warm-up موثق |
+| Batch extension speedup | 6.48× | ADOPT |
+| الاختبارات الآلية | 89 passed | CPU محلي |
 
 ## بنية المستودع
 
@@ -91,7 +93,7 @@ scripts/           الفاحص وأوامر توليد الأدلة
 - نتائج الدفاتر المرجعية `MEASURED_SMOKE` لا تساوي نتائج حزمة التقييم الرسمية.
 - لا تُرفع الأوزان أو ملفات ONNX إلى GitHub؛ يعاد إنشاؤها من checkpoint موثق.
 - زمن Colab CPU يتأثر بالجهاز المشترك ولا يمثل زمن إنتاج.
-- يلزم تشغيل `PROJECT_MODE=True` في دفتر 08 باستخدام نموذج بيان الفعلي قبل إعلان Gate D.
+- benchmark يستخدم `PROJECT_ARTIFACT` الفعلي، لكن cache الساخن جزء من قياس HTTP ويجب تفسيره مع قياس model-only غير المخزّن.
 
 ## النزاهة وإعادة الإنتاج
 
