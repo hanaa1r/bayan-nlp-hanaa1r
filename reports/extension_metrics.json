@@ -1,0 +1,11 @@
+{
+  "name": "batch-classification-endpoint",
+  "measured": true,
+  "independent_from_core": true,
+  "workload_items": 8,
+  "repetitions": 30,
+  "baseline_sequential_http_p50_ms": 12.138454,
+  "batch_http_p50_ms": 1.8740565,
+  "speedup": 6.477101410763229,
+  "decision": "ADOPT"
+}
